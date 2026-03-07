@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Water Bills Automation</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Water Bills Automation</h1>
+      <p class="muted">Select file(s), set schedule, and start auto upload.</p>
+
+      <section class="card">
+        <label class="label" for="fileInput">Select Excel/CSV files</label>
+        <input id="fileInput" type="file" accept=".csv,.xlsx,.xls" multiple />
+
+        <label class="label" for="folderInput">Or select folder</label>
+        <input id="folderInput" type="file" accept=".csv,.xlsx,.xls" webkitdirectory directory multiple />
+
+        <p id="fileSummary" class="muted">No files selected</p>
+      </section>
+
+      <section class="card">
+        <label class="label" for="intervalValue">Run every</label>
+        <div class="row">
+          <input id="intervalValue" type="number" min="1" value="10" />
+          <select id="intervalUnit" aria-label="Interval unit">
+            <option value="seconds">Seconds</option>
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card stats">
+        <p><strong>Status:</strong> <span id="statusText">Stopped</span></p>
+        <p><strong>Upload count:</strong> <span id="uploadCount">0</span></p>
+        <p><strong>Last file:</strong> <span id="lastFile">-</span></p>
+        <p><strong>Next upload in:</strong> <span id="nextUpload">-</span></p>
+      </section>
+
+      <section class="card">
+        <p class="label">Close Behavior</p>
+        <label class="toggleLabel muted">
+          <input id="stopOnClose" type="checkbox" checked />
+          Stop when popup closes
+        </label>
+        <label class="toggleLabel muted">
+          <input id="keepRunning" type="checkbox" />
+          Keep running in background
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="startBtn" class="primary" type="button">Start</button>
+        <button id="stopBtn" type="button">Stop</button>
+        <button id="uploadNowBtn" type="button">Upload Now</button>
+        <button id="resetCountBtn" type="button">Reset Count</button>
+        <button id="exportLogsBtn" type="button">Export Logs</button>
+        <button id="clearLogsBtn" type="button">Clear Logs</button>
+      </section>
+
+      <p id="message" class="message"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

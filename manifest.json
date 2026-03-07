@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Water Bills Auto Uploader",
+  "version": "1.0.0",
+  "description": "Automate CSV/Excel uploads on the Water Bill admin page with scheduler and counter.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "https://w-001-admin.vercel.app/*"
+  ],
+  "action": {
+    "default_title": "Water Bills Automation",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://w-001-admin.vercel.app/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
